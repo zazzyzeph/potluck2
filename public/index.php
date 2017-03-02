@@ -20,6 +20,46 @@
 			color:white;
 		}
 	</style>
-	<h1>HELL YEAH</h1>
+	<div class="container">
+		<h1>HELL YEAH</h1>
+		<?php
+		$mysqli = new mysqli("localhost", "zazzy", "garbageboy", "potluckdb");
+
+		/* check connection */
+		if (mysqli_connect_errno()) {
+			printf("Connect failed: %s\n", mysqli_connect_error());
+			exit();
+		}
+
+		$city = "Amersfoort";
+
+		/* create a prepared statement */
+		if ($stmt = $mysqli->prepare("SELECT * FROM users")) {
+
+
+			/* bind parameters for markers */
+    // $stmt->bind_param("s", $city);
+
+			/* execute query */
+			$stmt->execute();
+
+			/* bind result */
+			$result = $stmt->get_result();
+
+			while ($myrow = $result->fetch_assoc()) {
+
+        // use your $myrow array as you would with any other fetch
+				printf("<p>%s</p>", $myrow['name']);
+
+			}
+
+			/* close statement */
+			$stmt->close();
+		}
+
+		/* close connection */
+		$mysqli->close();
+		?>
+	</div>
 </body>
 </html>
