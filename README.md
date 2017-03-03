@@ -8,7 +8,7 @@
 4. `mysql -u root`
 5. `CREATE USER 'zazzy'@'localhost' IDENTIFIED BY 'garbageboy';`
 6. `quit`
-7. `mysql -u root database_name < file.sql`
+7. `mysql -u root potluckdb < file.sql`
 8. `quit`
 9. Profit.
 
